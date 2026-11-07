@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Matthew Ranford | Web Producer, CMS Specialist, & Frontend Developer | Gold Coast',
+  description = 'Web Producer, CMS Specialist, & Frontend Developer based on the Gold Coast. Experienced in Duda, WordPress, Webflow, Shopify, and frontend development — delivering and maintaining client websites at scale.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="min-h-screen">
+    <main>
+      <slot />
+    </main>
+
+    <script>
+      import '../scripts/animations.ts';
+    </script>
+  </body>
+</html>
