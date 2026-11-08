@@ -10,6 +10,8 @@
   --color-paper: #fafafa;
   --color-muted: #6b7280;
   --color-brand: #a30b16;
+  --color-coral: #f15375;
+  --color-ember: #fb7008;
 }
 
 @layer base {
