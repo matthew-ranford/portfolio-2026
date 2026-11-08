@@ -1,1 +1,26 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  /* Fonts (use the exact names Fontsource registered) */
+  --font-heading: 'Raleway Variable', sans-serif;
+  --font-sans: 'Albert Sans Variable', sans-serif;
+
+  /* Colours: placeholders, swap for your own */
+  --color-ink: #111111;
+  --color-paper: #fafafa;
+  --color-muted: #6b7280;
+  --color-brand: #a30b16;
+}
+
+@layer base {
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+  }
+}
