@@ -24,3 +24,9 @@
     @apply font-heading;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+  }
+}
