@@ -5,42 +5,47 @@ import { Icon } from 'astro-icon/components';
 const contacts = [
   { icon: 'lucide:mail', label: 'matt.ranford16@gmail.com', href: 'mailto:matt.ranford16@gmail.com' },
   { icon: 'tabler:brand-github', label: 'github.com/matthew-ranford', href: 'https://github.com/matthew-ranford' },
-  { icon: 'tabler:brand-linkedin', label: 'linkedin.com/in/matthew-ranford', href: 'https://linkedin.com/in/matthew-ranford' },
-  { icon: 'lucide:map-pin', label: 'Bilinga, Gold Coast' },
+  { icon: 'tabler:brand-linkedin', label: 'linkedin.com/in/matthew-ranford', href: 'https://www.linkedin.com/in/matthew-ranford-23b759261/' },
+  { icon: 'lucide:map-pin', label: 'Bilinga, Gold Coast', href: 'https://maps.app.goo.gl/kaeptj3vEAzN3Y4z8', alwaysShowLabel: true },
 ];
+
+const shadow = '[text-shadow:0_3px_5px_rgb(0_0_0/0.3)]';
 ---
 
 <section id="home" class="relative flex min-h-svh items-center overflow-hidden">
   <img
-    src="/public/images/matt-hero.webp"
+    src="/images/matt-hero.webp"
     alt=""
     class="absolute inset-0 -z-10 h-full w-full object-cover"
   />
 
   <Container class="py-32">
-    <p class="font-heading text-2xl font-semibold text-coral md:text-4xl">
+    <h1 class:list={['font-heading text-[22px] font-semibold text-coral md:text-[35px]', shadow]}>
       Web Producer | CMS Specialist | Frontend Developer.
-    </p>
-    <h1 class="font-heading text-6xl font-bold text-white md:text-8xl">
-      Matthew Ranford.
     </h1>
+    <p class:list={['font-heading text-[40px] font-bold leading-tight text-white md:text-[61px]', shadow]}>
+      Matthew Ranford.
+    </p>
 
     <ul class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
-      {contacts.map((item) => (
-        <li>
-          {item.href ? (
-            <a href={item.href} class="flex items-center gap-3 text-sm text-white/90 hover:text-white">
-              <Icon name={item.icon} class="size-6 text-coral" aria-hidden="true" />
-              {item.label}
+      {contacts.map((item) => {
+        const isExternal = item.href.startsWith('http');
+        return (
+          <li>
+            <a
+              href={item.href}
+              target={isExternal ? '_blank' : undefined}
+              rel={isExternal ? 'noopener noreferrer' : undefined}
+              class:list={['flex items-center gap-3 text-white/90 hover:text-white', shadow]}
+            >
+              <Icon name={item.icon} class="size-8 shrink-0 text-coral" aria-hidden="true" />
+              <span class:list={['text-sm', !item.alwaysShowLabel && 'max-md:sr-only']}>
+                {item.label}
+              </span>
             </a>
-          ) : (
-            <span class="flex items-center gap-3 text-sm text-white/90">
-              <Icon name={item.icon} class="size-6 text-coral" aria-hidden="true" />
-              {item.label}
-            </span>
-          )}
-        </li>
-      ))}
+          </li>
+        );
+      })}
     </ul>
   </Container>
 </section>
