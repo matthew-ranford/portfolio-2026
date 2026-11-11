@@ -1,0 +1,46 @@
+---
+import Container from './Container.astro';
+import { Icon } from 'astro-icon/components';
+
+const contacts = [
+  { icon: 'lucide:mail', label: 'matt.ranford16@gmail.com', href: 'mailto:matt.ranford16@gmail.com' },
+  { icon: 'tabler:brand-github', label: 'github.com/matthew-ranford', href: 'https://github.com/matthew-ranford' },
+  { icon: 'tabler:brand-linkedin', label: 'linkedin.com/in/matthew-ranford', href: 'https://linkedin.com/in/matthew-ranford' },
+  { icon: 'lucide:map-pin', label: 'Bilinga, Gold Coast' },
+];
+---
+
+<section id="home" class="relative flex min-h-svh items-center overflow-hidden">
+  <img
+    src="/public/images/matt-hero.webp"
+    alt=""
+    class="absolute inset-0 -z-10 h-full w-full object-cover"
+  />
+
+  <Container class="py-32">
+    <p class="font-heading text-2xl font-semibold text-coral md:text-4xl">
+      Web Producer | CMS Specialist | Frontend Developer.
+    </p>
+    <h1 class="font-heading text-6xl font-bold text-white md:text-8xl">
+      Matthew Ranford.
+    </h1>
+
+    <ul class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+      {contacts.map((item) => (
+        <li>
+          {item.href ? (
+            <a href={item.href} class="flex items-center gap-3 text-sm text-white/90 hover:text-white">
+              <Icon name={item.icon} class="size-6 text-coral" aria-hidden="true" />
+              {item.label}
+            </a>
+          ) : (
+            <span class="flex items-center gap-3 text-sm text-white/90">
+              <Icon name={item.icon} class="size-6 text-coral" aria-hidden="true" />
+              {item.label}
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </Container>
+</section>
