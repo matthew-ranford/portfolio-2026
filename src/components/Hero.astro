@@ -13,14 +13,18 @@ const shadow = '[text-shadow:0_3px_5px_rgb(0_0_0/0.3)]';
 ---
 
 <section id="home" class="relative flex min-h-svh items-center overflow-hidden">
+<picture>
+  <source media="(max-width: 767px)" srcset="/images/matt-mobile-hero.webp" />
   <img
     src="/images/matt-hero.webp"
     alt=""
-    class="absolute inset-0 -z-10 h-full w-full object-cover"
+    fetchpriority="high"
+    class="absolute inset-0 -z-10 h-full w-full object-cover object-center md:max-lg:object-[70%_center]"
   />
+</picture>
 
   <Container class="py-32">
-    <h1 class:list={['font-heading text-[22px] font-semibold text-coral md:text-[35px]', shadow]}>
+    <h1 class:list={['font-heading text-[22px] font-medium text-coral md:text-[35px]', shadow]}>
       Web Producer | CMS Specialist | Frontend Developer.
     </h1>
     <p class:list={['font-heading text-[40px] font-bold leading-tight text-white md:text-[61px]', shadow]}>
