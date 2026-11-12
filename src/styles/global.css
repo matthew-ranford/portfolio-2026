@@ -28,7 +28,8 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .js [data-reveal] {
+  .js [data-reveal],
+  .js [data-hero] {
     opacity: 0;
   }
 }

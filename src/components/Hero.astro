@@ -24,10 +24,10 @@ const shadow = '[text-shadow:0_3px_5px_rgb(0_0_0/0.3)]';
 </picture>
 
   <Container class="py-32">
-    <h1 class:list={['font-heading text-[22px] font-medium text-coral md:text-[35px]', shadow]}>
+    <h1 data-hero data-hero-heading class:list={['font-heading text-[22px] font-medium text-coral md:text-[35px]', shadow]}>
       Web Producer | CMS Specialist | Frontend Developer.
     </h1>
-    <p class:list={['font-heading text-[40px] font-bold leading-tight text-white md:text-[61px]', shadow]}>
+    <p data-hero data-hero-name class:list={['font-heading text-[40px] font-bold leading-tight text-white md:text-[61px]', shadow]}>
       Matthew Ranford.
     </p>
 
@@ -35,7 +35,7 @@ const shadow = '[text-shadow:0_3px_5px_rgb(0_0_0/0.3)]';
       {contacts.map((item) => {
         const isExternal = item.href.startsWith('http');
         return (
-          <li>
+          <li data-hero data-hero-contact>
             <a
               href={item.href}
               target={isExternal ? '_blank' : undefined}
