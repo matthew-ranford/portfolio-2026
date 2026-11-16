@@ -24,14 +24,18 @@ const shadow = '[text-shadow:0_3px_5px_rgb(0_0_0/0.3)]';
 </picture>
 
   <Container class="py-32">
-    <h1 data-hero data-hero-heading class:list={['font-heading text-[22px] font-medium text-coral md:text-[35px]', shadow]}>
-      Web Producer | CMS Specialist | Frontend Developer.
+    <h1 data-hero data-hero-heading class:list={['font-heading text-[18px] font-medium text-coral md:text-[20px]', shadow]}>
+      <span data-phrase class="inline-block">Web Producer</span>{' '}
+      <span data-phrase aria-hidden="true" class="inline-block">|</span>{' '}
+      <span data-phrase class="inline-block">CMS Specialist</span>{' '}
+      <span data-phrase aria-hidden="true" class="inline-block">|</span>{' '}
+      <span data-phrase class="inline-block">Frontend Developer.</span>
     </h1>
-    <p data-hero data-hero-name class:list={['font-heading text-[40px] font-bold leading-tight text-white md:text-[61px]', shadow]}>
+    <p data-hero data-hero-name class:list={['-mt-5 -ml-1 font-heading text-[50px] font-bold leading-tight tracking-tighter text-white [font-kerning:none] md:text-[109px]', shadow]}>
       Matthew Ranford.
     </p>
 
-    <ul class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+    <ul class="mt-4 flex flex-wrap gap-x-8 gap-y-4">
       {contacts.map((item) => {
         const isExternal = item.href.startsWith('http');
         return (
