@@ -3,6 +3,7 @@ import '../styles/global.css';
 import '@fontsource-variable/raleway';
 import '@fontsource-variable/albert-sans';
 import Header from '../components/Header.astro';
+import Background from '../components/Background.astro';
 
 interface Props {
   title?: string;
@@ -27,6 +28,7 @@ const {
     </script>
   </head>
   <body class="min-h-screen bg-ink text-white">
+    <Background />
     <Header />
     <main>
       <slot />

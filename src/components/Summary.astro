@@ -1,10 +1,14 @@
 ---
 import Container from './Container.astro';
+
+const shadow = '[text-shadow:0_3px_5px_rgb(0_0_0/0.3)]';
 ---
+
+
 
 <section id="summary" class="relative py-24 md:py-32">
   <Container>
-    <h2 data-reveal class="font-heading text-6xl font-bold text-coral md:text-[80px]">
+    <h2 data-reveal class:list={['font-heading text-[50px] font-bold leading-tight tracking-tighter text-coral [font-kerning:none] md:text-[109px]', shadow]}>
       Summary
     </h2>
 

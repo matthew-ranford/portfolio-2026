@@ -127,3 +127,16 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
     )
   })
 })
+
+// Background blur: blurred from Summary onwards
+const bg = document.querySelector<HTMLElement>('[data-bg]')
+const summary = document.querySelector<HTMLElement>('#summary')
+
+if (bg && summary) {
+  ScrollTrigger.create({
+    trigger: summary,
+    start: 'top 80%',
+    end: 'max',
+    onToggle: (self) => bg.toggleAttribute('data-blurred', self.isActive),
+  })
+}

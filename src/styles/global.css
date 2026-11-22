@@ -33,3 +33,17 @@
     opacity: 0;
   }
 }
+
+[data-bg-image] {
+  transition: filter 0.8s ease;
+}
+
+[data-bg][data-blurred] [data-bg-image] {
+  filter: blur(20px) brightness(0.5) saturate(1.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-bg-image] {
+    transition: none;
+  }
+}
