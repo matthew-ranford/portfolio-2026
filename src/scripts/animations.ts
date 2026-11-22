@@ -128,6 +128,83 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
   })
 })
 
+// Testimonials: pinned section, cards slide in from the right and stack
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  const section = document.querySelector<HTMLElement>('[data-testimonials]')
+  const stage = section?.querySelector<HTMLElement>('[data-testimonial-stage]')
+  const cards = gsap.utils.toArray<HTMLElement>(
+    '[data-testimonial-card]',
+    section,
+  )
+
+  if (!section || !stage || !cards.length) return
+
+  // Take the cards out of the flow so they can sit on top of each other
+  gsap.set(cards, { position: 'absolute', top: 0, left: 0 })
+
+  // The stage needs an explicit height now that nothing inside it takes up space,
+  // and every card is set to the height of the tallest one
+  const sizeStage = () => {
+    gsap.set(cards, { height: 'auto' }) // clear any earlier height so we measure the natural size
+    const tallest = Math.max(...cards.map((c) => c.offsetHeight))
+    gsap.set(cards, { height: tallest })
+    gsap.set(stage, { height: tallest + 48 })
+  }
+  sizeStage()
+  ScrollTrigger.addEventListener('refreshInit', sizeStage)
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      pin: true,
+      scrub: 1,
+      start: 'top top',
+      end: () => `+=${cards.length * 600}`,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+    },
+  })
+
+  cards.forEach((card, i) => {
+    const dir = i % 2 === 0 ? 6 : -6 // alternate which way each card tilts
+    const rest = i % 2 === 0 ? i * 1.5 : i * -1.5 // final resting tilt grows down the stack
+    const t = i * 0.6
+
+    gsap.set(card, { zIndex: i + 1 })
+
+    tl.fromTo(
+      card,
+      { x: () => window.innerWidth, y: 0, rotate: dir * 1.2 },
+      { x: i * 6, y: i * 4, rotate: rest, ease: 'power3.out', duration: 0.6 },
+      t,
+    )
+      // settling wobble
+      .to(
+        card,
+        { rotate: rest + dir * 0.3, duration: 0.08, ease: 'power1.inOut' },
+        t + 0.6,
+      )
+      .to(
+        card,
+        { rotate: rest - dir * 0.2, duration: 0.08, ease: 'power1.inOut' },
+        t + 0.68,
+      )
+      .to(
+        card,
+        { rotate: rest, duration: 0.07, ease: 'power1.inOut' },
+        t + 0.76,
+      )
+  })
+
+  // Hold the finished stack for a moment before the section unpins
+  tl.to({}, { duration: 0.6 })
+
+  return () => ScrollTrigger.removeEventListener('refreshInit', sizeStage)
+})
+
+// Heights depend on the web fonts, so recalculate once they've loaded
+document.fonts.ready.then(() => ScrollTrigger.refresh())
+
 // Background blur: blurred from Summary onwards
 const bg = document.querySelector<HTMLElement>('[data-bg]')
 const summary = document.querySelector<HTMLElement>('#summary')
