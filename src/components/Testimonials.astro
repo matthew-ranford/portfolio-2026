@@ -1,0 +1,59 @@
+---
+import Container from './Container.astro';
+
+const testimonials = [
+  {
+    quote:
+      'He proactively took on an out-of-the-box challenge and turned it into a valuable deep dive into website animations and transitions. By exploring simple yet effective enhancements, collaborating with the Design team, and seeking CX feedback, he demonstrated strong initiative and a genuine drive to improve our product. A great example of challenging complacency.',
+  },
+  {
+    quote:
+      "Matt has been an absolute superstar, helping out with a retention project for Superior Access Hire, He has been huge in helping getting our vision to life and just rolling with every change / idea and executing it and rolling with the changes as they come, always jumps in and lends a hand, couldnt have done it without him! Legend",
+  },
+  {
+    quote:
+      'This person jumps onto anything and everything and is super helpful with all things in their space. Approachable, kind, and explains everything properly — making sure you have what you need to solve an issue or explain something to a client.',
+  },
+  {
+    quote:
+      'Matt consistently embodies true teamwork. Always willing to jump in and help, shares thoughtful ideas for improving how we work, and brings a genuinely positive, easy-to-work-with attitude. He makes collaboration effortless.',
+  },
+  {
+    quote:
+      "Matt proactively supports our pod's queues while keeping his own well under control. Always quick to step in whenever I get stuck with dev reworks — great skills and I'm constantly learning something new from him.",
+  },
+  {
+    quote:
+      "Never one to stick with the old way when there's a smarter option. Always exploring solutions and sharing his thinking with the team. Coupled with his strong work ethic, this extra effort makes him an outstanding team member.",
+  },
+  {
+    quote:
+      "My new favourite dev, thanks for all your work on these reworks mate, these sites are looking beautiful, the work doesn't go unnoticed!",
+  },
+];
+---
+
+<section id="testimonials" class="relative py-24 md:py-32">
+  <Container class="grid gap-12 lg:grid-cols-[minmax(0,500px)_1fr] lg:gap-16">
+    <div class="relative self-start pl-6 before:absolute before:top-[5%] before:bottom-[5%] before:left-0 before:w-0.75 before:rounded-full before:bg-linear-to-b before:from-coral before:to-ember">
+      <h2 class="bg-linear-to-b from-coral to-ember bg-clip-text font-heading text-[26px] leading-[1.3] font-semibold text-transparent md:text-[40px]">
+        What people from Localsearch have said.
+      </h2>
+    </div>
+
+    <div class="flex flex-col gap-6">
+      {testimonials.map((t) => (
+        <figure class="flex w-full max-w-140 flex-col justify-between gap-6 rounded-[18px] border border-white/15 bg-white/8 p-8 backdrop-blur-[20px] backdrop-saturate-120 md:p-10">
+          <blockquote>
+            <p class="text-[15px] leading-[1.75] text-white/90 italic before:mr-1 before:align-[-20px] before:text-[52px] before:leading-0 before:text-coral before:not-italic before:content-['“'] after:content-['”'] md:text-lg">
+              {t.quote}
+            </p>
+          </blockquote>
+          <figcaption class="text-[13px] tracking-[0.3px] text-white">
+            — Anonymous colleague, Localsearch
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </Container>
+</section>
